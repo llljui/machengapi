@@ -9,6 +9,7 @@ export default new Router({
   routes: [
      { path: '/',name:'首页',component: _import('login/index'), hidden: true },
      { path: '/tips',name:'温馨提示',component: _import('layout/tips'), hidden: true },
+     { path: '/tips_2',name:'温馨提示',component: _import('layout/tips_2'), hidden: true },
      { path: '/login',name:'登录',component: _import('login/index'), hidden: true },
      {
       path:'/partner',

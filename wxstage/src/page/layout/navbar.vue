@@ -72,7 +72,9 @@ export default {
     else if(location.search.indexOf('cid=2')!=-1&&location.search.indexOf('channel=fuyang')!=-1){
       document.title="八道雀神后台";
     }else if(location.search.indexOf('cid=3')!=-1&&location.search.indexOf('channel=default')!=-1){
-      document.title="全民大冶后台";
+      document.title="决战绍兴游戏";
+    }else if(location.search.indexOf('cid=8')!=-1&&location.search.indexOf('channel=default')!=-1){
+      document.title="全民十三水";
     }
     else{console.log('其他标题')}
     var arr,reg=new RegExp("(^| )"+'token'+"=([^;]*)(;|$)");
@@ -99,10 +101,22 @@ export default {
                             self.navshow4=true;
                             console.log('不是合伙人身份');
                             sessionStorage.status='1';
+                            console.log(res.data.data.userInfo.uid);
+                            // if(res.data.data.userInfo.uid=='3814858'||res.data.data.userInfo.uid=='2061160'){
+                            //   function getCookie(name)
+                            //       {
+                            //       var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+                            //       if(arr=document.cookie.match(reg))
+                            //       return unescape(arr[2]);
+                            //       else
+                            //       return null;
+                            //       }
+                            //   alert(getCookie('sid'));
+                            // }
                           }
                   }).catch(function (err) {
                     console.log(err);
-                  })      
+                  })
           }else{
              return;
           }
@@ -127,6 +141,7 @@ a {
 }
 nav{margin:0 auto;display: block;width: 90%;}
 nav ul li{display: inline-block; width: 30%;text-align: center;height: 10vh;padding-top: 5%;color: #8492A6;}
-.el-dropdown{width: 32%;margin:0;}
+.el-dropdown{width: 31.5%;margin:0 auto;}
+
 .el-dropdown button{width: 100%;border:none;height: 10vh;color: #677586;}
 </style>

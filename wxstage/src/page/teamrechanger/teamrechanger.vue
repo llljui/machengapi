@@ -2,69 +2,80 @@
   <transition name="fade" mode="in-out">
   <div class="teamrechanger">
   	<el-col :span="22" class="sharecode" v-html="yqcode"></el-col>
-	<el-col :span="8" >
-		<div class="brb">
-			直属会员
-			<h5 class="member" v-html="members"></h5>
-		</div>
-	</el-col>
-	<el-col :span="8" ><div class="brb brrl">
-			下级推广员
-			<h5 class="member" v-html="agent"></h5>
-		</div></el-col>
-	<el-col :span="8" ><div class="brb">
-			返利总额
-			<h5 class="member" v-html="rewardall"></h5>
-	</div>
-	</el-col>
-    <el-col :span="10" :offset="1" class="mart">
-        <el-date-picker :default-value="yesdate" type="date"  placeholder="选择日期" v-model="date1" style="width: 100%;"></el-date-picker>
-    </el-col>
-     <el-col :span="2" class="mart">-</el-col>
-    <el-col :span="10" class="mart tablet">
-        <el-date-picker :default-value="todaydate" type="date"  placeholder="选择日期"  v-model="date2" style="width: 100%;"></el-date-picker>
-    </el-col>
-    <el-col :span="22" :offset="1" class="search"><el-button width="100%" @click="searchinfo" type="primary">查询</el-button></el-col>
-    <el-col :span="10" :offset="1" class="tablet">充值总额：<span>{{rechargeall}}</span>元</el-col>
-    <el-col :span="10" :offset="2" class="tablet">返现总额：<span>{{returnall}}</span>元</el-col>
-     <el-table
-    :data="tableData"
-    border
-    style="width: 100%">
-    <el-table-column
-    align="center"
-    width="95"
-      label="代理级别">
-      <template slot-scope="scope">
-      {{scope.row.name}}返({{scope.row.percent}}%)
-      </template>
-    </el-table-column>
-    <el-table-column
-      label="充值总额"
-      width="100"
-      align="center">
-      <template slot-scope="scope">
-       {{scope.row.charge}}<br>返({{scope.row.reward}})
-      </template>
-    </el-table-column>
-    <el-table-column
-    align="center"
-    width="95"
-      label="钻石消耗">
-      <template slot-scope="scope">
-          {{scope.row.consume}}
-      </template>
-    </el-table-column>
-    <el-table-column label="操作" align="center">
-      <template slot-scope="scope">
-        <el-button
-        align="left"
-          class="detailbtn"
-          size="small"
-          @click="handleEdit(scope.$index, scope.row)">明细</el-button>
-      </template>
-    </el-table-column>
-  </el-table>
+    	<el-col :span="8" >
+    		<div class="brb">
+    			直属会员
+    			<h5 class="member" v-html="members"></h5>
+    		</div>
+    	</el-col>
+    	<el-col :span="8" ><div class="brb brrl">
+    			下级推广员
+    			<h5 class="member" v-html="agent"></h5>
+    		</div></el-col>
+    	<el-col :span="8" ><div class="brb">
+    			返利总额
+    			<h5 class="member" v-html="rewardall"></h5>
+    	</div>
+    	</el-col>
+        <el-col :span="10" :offset="1" class="mart">
+            <el-date-picker :default-value="yesdate" type="date"  placeholder="选择日期" v-model="date1" style="width: 100%;"></el-date-picker>
+        </el-col>
+         <el-col :span="2" class="mart">-</el-col>
+        <el-col :span="10" class="mart tablet">
+            <el-date-picker :default-value="todaydate" type="date"  placeholder="选择日期"  v-model="date2" style="width: 100%;"></el-date-picker>
+        </el-col>
+        <el-col :span="22" :offset="1" class="search"><el-button width="100%" @click="searchinfo" type="primary">查询</el-button></el-col>
+        <el-col :span="10" :offset="1" class="tablet">充值总额：<span>{{rechargeall}}</span>元</el-col>
+        <el-col :span="10" :offset="2" class="tablet">返现总额：<span>{{returnall}}</span>元</el-col>
+         <el-table
+        :data="tableData"
+        border
+        style="width: 100%">
+        <el-table-column
+        align="center"
+        width="95"
+          label="代理级别">
+          <template slot-scope="scope">
+          {{scope.row.name}}返({{scope.row.percent}}%)
+          </template>
+        </el-table-column>
+        <el-table-column
+          label="充值总额"
+          width="100"
+          align="center">
+          <template slot-scope="scope">
+           {{scope.row.charge}}<br>返({{scope.row.reward}})
+          </template>
+        </el-table-column>
+        <el-table-column
+        align="center"
+        width="95"
+          label="钻石消耗">
+          <template slot-scope="scope">
+              {{scope.row.consume}}
+          </template>
+        </el-table-column>
+        <el-table-column label="操作" align="center">
+          <template slot-scope="scope">
+            <el-button
+            align="left"
+              class="detailbtn"
+              size="small"
+              @click="handleEdit(scope.$index, scope.row)">明细</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      <div class="info_tips" v-show="info_tip_show" >
+        <div class="info_tips_modal" @click="infoclose"></div>
+        <div class="info_tips_message">
+            <p class="tips_message">
+              <header style="text-align:center;font-size:21px;height:8vh;">
+                通知
+              </header>
+              为了维护广大代理的利益，本平台决定：代理或玩家超过30天未登录游戏则取消其代理资格或其绑定关系。<br>本决定将从3月31日之后开始实行。
+            </p>
+        </div>
+      </div>
   </div>
 </transition>
 </template>
@@ -76,6 +87,7 @@ export default {
   name: 'teamrechanger',
   data () {
     return {
+      info_tip_show:false,
       input1:null,
       yqcode:null,
       date1:'',
@@ -91,6 +103,14 @@ export default {
     }
   },
   methods:{
+    infoclose:function () {
+      var self=this;
+      self.info_tip_show=false;
+    },
+    info_tip_show:function () {
+      var self=this;
+      self.info_tip_show=false;
+    },
   	  handleEdit(index, row) {
         var self = this;
         if (index==0) {
@@ -130,7 +150,7 @@ export default {
                       message: '结束时间不能不开始时间早',
                       type: 'warning'
                     });
-                  }    
+                  }
         }else{
           self.$message({
           title: '警告',
@@ -138,10 +158,13 @@ export default {
           type: 'warning'
         });
         }}
-        
+
 },
 mounted:function () {
   var self =this;
+  if (sessionStorage.cid==1) {
+    self.info_tip_show=true;
+  }
   var params={startTime:self.date1,endTime:self.date2,cid:sessionStorage.cid,channel:sessionStorage.channel};
   axios.post('http://pay.queyoujia.com/user/team/info',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
@@ -156,7 +179,7 @@ mounted:function () {
                         self.returnall=res.data.data.rewardTotal;
                       }).catch(function (err) {
                         console.log(err);
-                      }); 
+                      });
                       /*var now = new Date();
                       now.setHours('00', '00', '00', '0');
                       self.yesdate=now.getTime()/1000-86400;
@@ -184,4 +207,30 @@ div{text-align: center;}
         .fade-enter, .fade-leave-active {
           opacity: 0
         }
+.info_tips_modal{    position: fixed;
+width: 100vw;
+height: 100%;
+background: black;
+opacity: 0.5;
+top: 0;
+bottom: 0;
+right: 0;
+left: 0;
+margin: auto;
+z-index: 9998;
+}
+.info_tips_message{position: fixed;
+  padding: 0 5vw;
+    width: 80vw;
+    height: 30vh;
+    border: 1px solid #868686;
+    border-radius: 4px;
+    background: white;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    z-index: 9999;}
+.tips_message{padding:1vh 5vw;font-size: 14px;}
 </style>

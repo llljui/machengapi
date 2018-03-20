@@ -26,7 +26,7 @@
 	      style="width: 100%;"
 	      placeholder="选择日期"
 	     >
-	    </el-date-picker>	
+	    </el-date-picker>
 	  </div>
 	</el-col>
 	<el-col :span="22" :offset="1" class="search mrt mrb"><el-button type="primary" class="btn" @click="submit">查询</el-button></el-col>
@@ -64,7 +64,7 @@
   <div class="bor5" v-show="show5" @click="sure5"></div>
   <div class="brd5" v-show="show5">
   <h5>注：推广奖励问题咨询请联系官方客服，客服微信：{{weixin}}</h5>
-   <h5> 1、推广员将获取直属会员充值的45%和二级团队充值10%的返利。</h5>
+   <h5> 1、推广员将获取直属会员充值的{{perents}}%和二级团队充值10%的返利。</h5>
    <h5> 2、根据国家相关规定，通过推广机制获取的收益需要按照4%来征收个人所得税，目前为鼓励广大推广员暂不收取，10月1日起正式执行，请大家知晓。</h5>
    <h5> 3、推广返利随时可以通过本后台进行提取，<span style="color:red">每周限提一次，周二和周五为审核期，</span>审核通过后会直接打款至推广员当前所在微信钱包，请注意查收</h5>
     <el-col :span="22" :offset="1"><el-button type="primary" @click="sure5">确认</el-button></el-col>
@@ -81,6 +81,7 @@ export default {
   name: 'jutc',
   data () {
     return {
+			perents:'45',
       weixin:null,
       show5:true,
       showbg:false,
@@ -104,7 +105,7 @@ export default {
 			          title: '成功',
 			          message: '申请成功',
 			          type: 'success'
-			        });	
+			        });
             console.log(self.showbg);
             self.showbg=false;
   				}else{
@@ -112,7 +113,7 @@ export default {
 			          title: '警告',
 			          message: res.data.message,
 			          type: 'warning'
-			        });	
+			        });
             self.showbg=false;
             console.log(self.showbg);
   				}
@@ -139,7 +140,7 @@ export default {
   		console.log(self.value2-self.value1)
   		if (self.value1&&self.value2&&(self.value2-self.value1)>0&&((self.value2-self.value1)/86400000)<20) {
   			axios.get('http://pay.queyoujia.com/user/startlight/history',{params:{startTime:Date.parse(self.value1)/1000,endTime:Date.parse(self.value2)/1000,cid:sessionStorage.cid,channel:sessionStorage.channel}}).then(function (res) {
-		  		self.tableData=res.data.data.list;  		
+		  		self.tableData=res.data.data.list;
 		  	}).catch(function (err) {
 		  		console.log(err);
   			})
@@ -148,12 +149,12 @@ export default {
           title: '警告',
           message:'确保时间输入正确，间隔小于20天',
           type: 'warning'
-        });	
-  		}  		
+        });
+  		}
   	},
   	lookmore:function () {
   		console.log(22);
-  		
+
   	},
   	getmoney:function () {
   		var self =this;
@@ -190,6 +191,7 @@ export default {
       self.weixin='queyou999';
     }else if(sessionStorage.cid==1){
       self.weixin='dagong0088';
+			self.perents='50';
     }else{
       self.weixin='queyou8866';
     }

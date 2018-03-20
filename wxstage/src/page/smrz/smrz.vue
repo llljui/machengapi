@@ -4,31 +4,7 @@
     <el-col :span="22" :offset="1"><el-input type="text" class="mrt" v-model="username" placeholder="请输入真实姓名"></el-input></el-col>
     <el-col :span="22" :offset="1"><el-input type="text" class="mrt" v-model="tell" placeholder="请输入手机号"></el-input></el-col>
     <el-col :span="22" :offset="1"><el-input type="text" class="mrt" v-model="idcard" placeholder="请输入身份证号码"></el-input></el-col>
-   <!--  <el-col :span="12" style="textAlign:center">
-   <el-upload
-     class="avatar-uploader"
-     action="http://pay.queyoujia.com/public/upload"
-     :show-file-list="false"
-     :on-success="handleAvatarSuccess1"
-     :before-upload="beforeAvatarUpload1">
-     <img v-if="imageUrl1" :src="imageUrl1" class="avatar">
-     <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-   </el-upload>
-   身份证正面照
-   </el-col>
-   <el-col :span="12" style="textAlign:center">
-   <el-upload
-     class="avatar-uploader"
-     action="http://pay.queyoujia.com/public/upload"
-     :headers="{'Content-Type': 'application/x-www-form-urlencoded'}"
-     :show-file-list="false"
-     :on-success="handleAvatarSuccess2"
-     :before-upload="beforeAvatarUpload2">
-     <img v-if="imageUrl2" :src="imageUrl2" class="avatar">
-     <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-   </el-upload>
-   身份证反面照
-   </el-col> -->
+
     <el-col :span="22" :offset="1" class="search mrt"><el-button type="primary" class="btn" @click="submit">提交</el-button></el-col>
     <div v-show='info'>
       <div class="bor"></div>
