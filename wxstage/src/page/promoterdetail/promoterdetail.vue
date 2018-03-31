@@ -73,7 +73,7 @@ export default {
   mounted(){
     var self =this ;
     var params={uid:sessionStorage.promoterid,cid:sessionStorage.cid,channel:sessionStorage.channel}
-    axios.post('http://pay.queyoujia.com/user/promoter/detail ',qs.stringify(params),{headers: {
+    axios.post(sessionStorage.weburl+'/user/promoter/detail ',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
                         console.log(res);
@@ -112,7 +112,7 @@ export default {
       var self =this ;
       if (self.date1&&self.date2&&(self.date2-self.date1)>0&&((self.date2-self.date1)/86400000)<20) {
         var params={startTime:self.date1,endTime:self.date2,uid:sessionStorage.promoterid,cid:sessionStorage.cid,channel:sessionStorage.channel}
-      axios.post('http://pay.queyoujia.com/user/promoter/detail',qs.stringify(params),{headers: {
+      axios.post(sessionStorage.weburl+'/user/promoter/detail',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
                         console.log(res);
@@ -134,7 +134,7 @@ export default {
           type: 'warning'
         });
       }
-      
+
     }
   }
 }

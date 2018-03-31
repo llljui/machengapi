@@ -18,7 +18,7 @@ export default {
     computed:{
       headerkey(){
          var self =this;
-          axios.get('http://pay.queyoujia.com/user/info',{params:{cid:sessionStorage.cid,channel:sessionStorage.channel}}).then(function (res) {
+          axios.get(sessionStorage.weburl+'/user/info',{params:{cid:sessionStorage.cid,channel:sessionStorage.channel}}).then(function (res) {
             console.log(res.data.data);
             self.damiod=res.data.data.rich.diamond;
           }).catch(function (err) {
@@ -40,7 +40,7 @@ export default {
               self.shows=false;
         }
       }
-    
+
   },
   methods:{
     gohome:function () {

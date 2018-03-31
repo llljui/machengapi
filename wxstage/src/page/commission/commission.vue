@@ -123,7 +123,7 @@ export default {
     },
     hpost:function () {
      var self =this;
-      axios.post('http://pay.queyoujia.com/user/startlight/exchangeInfo',qs.stringify(self.newparams),{headers: {'Content-Type': 'application/x-www-form-urlencoded'}}).then(function (res) {
+      axios.post(sessionStorage.weburl+'/user/startlight/exchangeInfo',qs.stringify(self.newparams),{headers: {'Content-Type': 'application/x-www-form-urlencoded'}}).then(function (res) {
                     if (res.data.code==0) {
                        self.$message({
                       type: 'success',
@@ -150,7 +150,7 @@ export default {
       self.nowpage=1;
       if (self.date2>=self.date1&&((self.date2-self.date1)/86400000)<20) {
          var params={cid:sessionStorage.cid,channel:sessionStorage.channel,startTime:Date.parse(self.date1)/1000,endTime:Date.parse(self.date2)/1000}
-           axios.post('http://pay.queyoujia.com/user/startlight/exchangeInfo',qs.stringify(params),{headers: {'Content-Type': 'application/x-www-form-urlencoded'}}).then(function (res) {
+           axios.post(sessionStorage.weburl+'/user/startlight/exchangeInfo',qs.stringify(params),{headers: {'Content-Type': 'application/x-www-form-urlencoded'}}).then(function (res) {
                            console.log(res);
                            self.nowpage=1;
                            self.tableData=[];
@@ -159,10 +159,10 @@ export default {
                            res.data.data.list.forEach(function (item,index) {
                            self.tableData[index].amountBonus=item.amountBonus*item.amount;
                            self.tableData[index].money=item.amountBonus*item.amount+item.amount;
-                         });       
+                         });
                          setTimeout(function () {
                             self.loading=false;
-                          },300)                
+                          },300)
                          if (self.nowpage<res.data.data.totalPage) {
                              if (res.data.data.list.length<10) {
                              self.moreOrelse='无更多数据'
@@ -171,7 +171,7 @@ export default {
                              }
                           }else{
                             self.moreOrelse='无更多数据'
-                          } 
+                          }
                         }).catch(function (err) {
                           console.log(err);
                         })
@@ -181,16 +181,16 @@ export default {
           message: '结束时间不能不开始时间早,且时间间隔不大于20天',
           type: 'warning'
         });
-      }    
+      }
 	  	},
       searchinfo2:function () {
       //console.log(222);
        setTimeout(function () {
                               self.loading=false;
-                            },300);  
+                            },300);
       var self =this ;
       var params={cid:sessionStorage.cid,channel:sessionStorage.channel,startTime:Date.parse(self.date1)/1000,endTime:Date.parse(self.date2)/1000,page:self.nowpage};
-      axios.post('http://pay.queyoujia.com/user/startlight/exchangeInfo',qs.stringify(params),{headers: {'Content-Type': 'application/x-www-form-urlencoded'}}).then(function (res) {
+      axios.post(sessionStorage.weburl+'/user/startlight/exchangeInfo',qs.stringify(params),{headers: {'Content-Type': 'application/x-www-form-urlencoded'}}).then(function (res) {
                            console.log(res);
                            var tabletemp=[];
                            tabletemp=res.data.data.list;
@@ -203,7 +203,7 @@ export default {
                             }) ;
                             setTimeout(function () {
                               self.loading=false;
-                            },300);                
+                            },300);
                           if (self.nowpage<res.data.data.totalPage) {
                              if (res.data.data.list.length<10) {
                              self.moreOrelse='无更多数据'
@@ -212,7 +212,7 @@ export default {
                              }
                           }else{
                             self.moreOrelse='无更多数据'
-                          } 
+                          }
                         }).catch(function (err) {
                           console.log(err);
                         })
@@ -262,11 +262,11 @@ export default {
   			if (window.screen.availHeight<570) {
   				self.tabH='220';
   			}else{
-  				self.tabH=(window.screen.availHeight-500+((560/window.screen.availHeight)*110));		
+  				self.tabH=(window.screen.availHeight-500+((560/window.screen.availHeight)*110));
   				console.log(device_type);
   			}
   		}
-  		
+
   	}
   },
   mounted(){
@@ -276,7 +276,7 @@ export default {
       self.yesdate=now.getTime()/1000-86400;
       self.todaydate=now.getTime()/1000;//获取凌晨时间
     var params={cid:sessionStorage.cid,channel:sessionStorage.channel,/*,sid:'9c8104987b3e7c170121412bb6afd439',toid:'1218482',token:'vk92SYb6349245',uid:'2061160',*/startTime:self.yesdate,endTime:self.todaydate}
-    axios.post('http://pay.queyoujia.com/user/startlight/exchangeInfo',qs.stringify(params),{headers: {'Content-Type': 'application/x-www-form-urlencoded'}}).then(function (res) {
+    axios.post(sessionStorage.weburl+'/user/startlight/exchangeInfo',qs.stringify(params),{headers: {'Content-Type': 'application/x-www-form-urlencoded'}}).then(function (res) {
                            console.log(res);
                            self.tableData=[];
                            self.amountBonus=[];
@@ -286,10 +286,10 @@ export default {
                            res.data.data.list.forEach(function (item,index) {
                            self.tableData[index].amountBonus=item.amountBonus*item.amount;
                            self.tableData[index].money=item.amountBonus*item.amount+item.amount;
-                         });       
+                         });
                          setTimeout(function () {
                             self.loading=false;
-                          },100)                
+                          },100)
                           if (self.nowpage<res.data.data.totalPage) {
                              if (res.data.data.list.length<10) {
                              self.moreOrelse='无更多数据'
@@ -298,7 +298,7 @@ export default {
                              }
                           }else{
                             self.moreOrelse='无更多数据'
-                          }  
+                          }
                       }).catch(function (err) {
                         console.log(err);
                       })

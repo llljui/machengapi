@@ -96,7 +96,7 @@ export default {
         self.pagechose=1;
         self.tabletemp=[];
         var params={uid:self.userid,cid:sessionStorage.cid,channel:sessionStorage.channel/*,sid:'9c8104987b3e7c170121412bb6afd439',toid:'1218482',token:'vk92SYb6349245'*/}
-        axios.post('http://pay.queyoujia.com/user/member/list',qs.stringify(params),{headers: {
+        axios.post(sessionStorage.weburl+'/user/member/list',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
                         console.log(res.data.data.list);
@@ -115,10 +115,10 @@ export default {
       searchmember2:function () {
         var self =this;
        /* var params={cid:sessionStorage.cid,channel:sessionStorage.channel,page:self.pagechose}*/
-        axios.get('http://pay.queyoujia.com/user/member/list',{params:{cid:sessionStorage.cid,channel:sessionStorage.channel,page:self.pagechose}}).then(function (res) {
+        axios.get(sessionStorage.weburl+'/user/member/list',{params:{cid:sessionStorage.cid,channel:sessionStorage.channel,page:self.pagechose}}).then(function (res) {
                         res.data.data.list.forEach(function (item,index) {
                          self.tableData3.push(item);
-                        });              
+                        });
                         console.log(self.tableData3);
                        if (self.pagechose<res.data.data.total) {
                           self.moreOrelse='查看更多';
@@ -162,17 +162,17 @@ export default {
         if (window.screen.availHeight<570) {
           self.tabH='320';
         }else{
-          self.tabH=(window.screen.availHeight-500+((560/window.screen.availHeight)*270));    
+          self.tabH=(window.screen.availHeight-500+((560/window.screen.availHeight)*270));
           console.log(device_type);
         }
       }
-      
+
     }
   },
   mounted(){
     var self =this ;
     var params={cid:sessionStorage.cid,channel:sessionStorage.channel}
-    axios.post('http://pay.queyoujia.com/user/member/list',qs.stringify(params),{headers: {
+    axios.post(sessionStorage.weburl+'/user/member/list',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
                         console.log(res);

@@ -91,7 +91,7 @@ export default {
   		var self = this;
   		 if (self.date1&&self.date2) {
   		 	if (self.date2>=self.date1&&((self.date2-self.date1)/86400000)<20) {
-	  	axios.get('http://pay.queyoujia.com/user/team/promoter',{params:{startTime:Date.parse(self.date1)/1000,endTime:Date.parse(self.date2)/1000,cid:sessionStorage.cid,channel:sessionStorage.channel,uid:self.idinfo}}).then(function (res) {
+	  	axios.get(sessionStorage.weburl+'/user/team/promoter',{params:{startTime:Date.parse(self.date1)/1000,endTime:Date.parse(self.date2)/1000,cid:sessionStorage.cid,channel:sessionStorage.channel,uid:self.idinfo}}).then(function (res) {
 	                        console.log(res.data.data);
 	                        self.tableData3=[];
 	                        self.tableData3=res.data.data.list;
@@ -104,10 +104,10 @@ export default {
 		                      message: '结束时间不能不开始时间早,且时间间隔不大于20天',
 		                      type: 'warning'
 		                    });
-                		  }    
+                		  }
 	                  }else{
-	                  	if(!self.idinfo&&!self.date1||!self.date2){ 
-				  	axios.get('http://pay.queyoujia.com/user/team/promoter',{params:{startTime:Date.parse(self.date1)/1000,endTime:Date.parse(self.date2)/1000,cid:sessionStorage.cid,channel:sessionStorage.channel,uid:self.idinfo}}).then(function (res) {
+	                  	if(!self.idinfo&&!self.date1||!self.date2){
+				  	axios.get(sessionStorage.weburl+'/user/team/promoter',{params:{startTime:Date.parse(self.date1)/1000,endTime:Date.parse(self.date2)/1000,cid:sessionStorage.cid,channel:sessionStorage.channel,uid:self.idinfo}}).then(function (res) {
 				                        console.log(res.data.data);
 				                        self.tableData3=[];
 				                        self.tableData3=res.data.data.list;
@@ -119,8 +119,8 @@ export default {
 		                      message: '请确认时间',
 		                      type: 'warning'
 		                    });}else{
-	     
-				     	axios.get('http://pay.queyoujia.com/user/team/promoter',{params:{startTime:Date.parse(self.date1)/1000,endTime:Date.parse(self.date2)/1000,cid:sessionStorage.cid,channel:sessionStorage.channel,uid:self.idinfo}}).then(function (res) {
+
+				     	axios.get(sessionStorage.weburl+'/user/team/promoter',{params:{startTime:Date.parse(self.date1)/1000,endTime:Date.parse(self.date2)/1000,cid:sessionStorage.cid,channel:sessionStorage.channel,uid:self.idinfo}}).then(function (res) {
 				                        console.log(res.data.data);
 				                        self.tableData3=[];
 				                        self.tableData3=res.data.data.list;
@@ -146,7 +146,7 @@ export default {
   mounted(){
   	var self = this;
   	var params={/*startTime:Date.parse(self.date1)/1000,endTime:Date.parse(self.date2)/1000,*/cid:sessionStorage.cid,channel:sessionStorage.channel}
-  	axios.post('http://pay.queyoujia.com/user/team/promoter',qs.stringify(params),{headers: {
+  	axios.post(sessionStorage.weburl+'/user/team/promoter',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
                         console.log(res.data.data);

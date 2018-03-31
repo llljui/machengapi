@@ -29,7 +29,7 @@ export default {
   	 var self =this;
      self.nowid=self.uids;
   	  var params={uid:self.uids,cid:sessionStorage.cid,channel:sessionStorage.channel}//参数
-          axios.post('http://pay.queyoujia.com/user/check',qs.stringify(params),{headers: {
+          axios.post(sessionStorage.weburl+'/user/check',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
             console.log(res.data.code);
@@ -49,9 +49,9 @@ export default {
   },
   besure:function () {
   	 var self =this;
-     if (self.nowid) {         
+     if (self.nowid) {
                 var params={uid:self.nowid,cid:sessionStorage.cid,channel:sessionStorage.channel,amount:self.count}//参数
-               axios.post('http://pay.queyoujia.com/user/transfer',qs.stringify(params),{headers: {
+               axios.post(sessionStorage.weburl+'/user/transfer',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
             console.log(res.data.data.nickname);
@@ -73,18 +73,18 @@ export default {
           }).catch(function (err) {
             console.log(err);
           })
-                         
+
      }else{
       self.$message({
               message: '请先验证',
               type: 'warning'
-              }) 
-     }	
+              })
+     }
   }
   },
   mounted(){
     var self =this;
-    axios.get('http://pay.queyoujia.com/user/diamond',{params:{cid:sessionStorage.cid,channel:sessionStorage.channel}}).then(function (res) {
+    axios.get(sessionStorage.weburl+'/user/diamond',{params:{cid:sessionStorage.cid,channel:sessionStorage.channel}}).then(function (res) {
       self.cansold=res.data.data.diamond;
     }).catch(function (err) {
       console.log(err);

@@ -77,7 +77,7 @@ export default {
   mounted(){
   	var self =this ;
   	var params={uid:sessionStorage.memberuid,cid:sessionStorage.cid,channel:sessionStorage.channel}
-  	axios.post('http://pay.queyoujia.com/user/member/detail',qs.stringify(params),{headers: {
+  	axios.post(sessionStorage.weburl+'/user/member/detail',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
                       	console.log(res);

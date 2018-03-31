@@ -41,20 +41,20 @@ export default {
   methods:{
   	getcode:function () {
          var self =this ;
-         if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(self.input1))){ 
+         if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(self.input1))){
            this.$message({
               message: '手机格式有误！',
               type: 'warning'
             });
-            return false; 
+            return false;
         }else{
           var params={mobile:self.input1,cid:sessionStorage.cid,channel:sessionStorage.channel}
-          axios.post('http://pay.queyoujia.com/auth/sms').then(function (res) {
+          axios.post(sessionStorage.weburl+'/auth/sms').then(function (res) {
             console.log(res);
           }).catch(function (err) {
             console.log(err);
           })
-        } 
+        }
        for (let i=60;i>0;i--) {
         //console.log(i);
         setTimeout(function () {
@@ -73,7 +73,7 @@ export default {
       if (self.input1&&self.input2) {
         console.log('ok');
         var params={uid:sessionStorage.myuid,mobile:self.input1,code:self.input2,cid:sessionStorage.cid,channel:sessionStorage.channel}
-        axios.post('http://pay.queyoujia.com/user/bind/mobile',qs.stringify(params),{headers: {
+        axios.post(sessionStorage.weburl+'/user/bind/mobile',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function(res){
                         if (res.data.code==0) {
@@ -98,7 +98,7 @@ export default {
       }
     },
     checktel:function () {
-       
+
     }
   }
 }

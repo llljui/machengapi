@@ -99,7 +99,7 @@ export default {
   methods:{
   	postreq:function (argument) {
   		var self =this;
-  		axios.get('http://pay.queyoujia.com/user/startlight/exchange',{params:{starlight:self.vales,cid:sessionStorage.cid,channel:sessionStorage.channel}}).then(function (res) {
+  		axios.get(sessionStorage.weburl+'/user/startlight/exchange',{params:{starlight:self.vales,cid:sessionStorage.cid,channel:sessionStorage.channel}}).then(function (res) {
   				if (res.data.code==0) {
   					self.$message({
 			          title: '成功',
@@ -139,7 +139,7 @@ export default {
   		self.tableData=[];
   		console.log(self.value2-self.value1)
   		if (self.value1&&self.value2&&(self.value2-self.value1)>0&&((self.value2-self.value1)/86400000)<20) {
-  			axios.get('http://pay.queyoujia.com/user/startlight/history',{params:{startTime:Date.parse(self.value1)/1000,endTime:Date.parse(self.value2)/1000,cid:sessionStorage.cid,channel:sessionStorage.channel}}).then(function (res) {
+  			axios.get(sessionStorage.weburl+'/user/startlight/history',{params:{startTime:Date.parse(self.value1)/1000,endTime:Date.parse(self.value2)/1000,cid:sessionStorage.cid,channel:sessionStorage.channel}}).then(function (res) {
 		  		self.tableData=res.data.data.list;
 		  	}).catch(function (err) {
 		  		console.log(err);
@@ -199,7 +199,7 @@ export default {
        self.show5=false;
     }
   	self.tableH=window.screen.availHeight/2.5;
-  	axios.get('http://pay.queyoujia.com/user/startlight/now',{params:{cid:sessionStorage.cid,channel:sessionStorage.channel}}).then(function (res) {
+  	axios.get(sessionStorage.weburl+'/user/startlight/now',{params:{cid:sessionStorage.cid,channel:sessionStorage.channel}}).then(function (res) {
   		console.log(res);
   		self.cnts=res.data.data.cnt;
   		self.isVerify=res.data.data.isVerify;

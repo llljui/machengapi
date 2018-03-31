@@ -99,7 +99,8 @@ export default {
       rechargeall:null,
       returnall:null,
       yesdate:null,
-      todaydate:null
+      todaydate:null,
+      hadsee:1
     }
   },
   methods:{
@@ -128,7 +129,7 @@ export default {
         if (self.date1&&self.date2) {
           if (self.date2>=self.date1) {
             var params={startTime:self.date1,endTime:self.date2,cid:sessionStorage.cid,channel:sessionStorage.channel}
-          axios.post('http://pay.queyoujia.com/user/team/info',qs.stringify(params),{headers: {
+          axios.post(sessionStorage.weburl+'/user/team/info',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
                         console.log(res.data.data);
@@ -162,11 +163,12 @@ export default {
 },
 mounted:function () {
   var self =this;
-  if (sessionStorage.cid==1) {
+  if (sessionStorage.cid==1&&self.hadsee==1) {
     self.info_tip_show=true;
+    self.hadsee=2;
   }
   var params={startTime:self.date1,endTime:self.date2,cid:sessionStorage.cid,channel:sessionStorage.channel};
-  axios.post('http://pay.queyoujia.com/user/team/info',qs.stringify(params),{headers: {
+  axios.post(sessionStorage.weburl+'/user/team/info',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
                        // console.log(res.data.data);

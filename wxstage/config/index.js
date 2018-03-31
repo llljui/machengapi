@@ -8,9 +8,9 @@ const path = require('path')
 module.exports = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../stage_new/index.html'),
-    assetsRoot: path.resolve(__dirname, '../stage_new'),
-    assetsSubDirectory: 'static_new',
+    index: path.resolve(__dirname, '../stage_new_1/index.html'),
+    assetsRoot: path.resolve(__dirname, '../stage_new_1'),
+    assetsSubDirectory: 'stage_new_1',
     assetsPublicPath: '/',
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
@@ -29,7 +29,7 @@ module.exports = {
     env: require('./dev.env'),
     port: process.env.PORT ||6060,
     autoOpenBrowser: true,
-    assetsSubDirectory: 'static_new',
+    assetsSubDirectory: 'stage_new_1',
     assetsPublicPath: '/',
     proxyTable: {},
     // CSS Sourcemaps off by default because relative paths are "buggy"

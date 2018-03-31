@@ -98,7 +98,7 @@ export default {
       searchinfo:function () {
         var self =this ;
         var params={uid:self.prouid,cid:sessionStorage.cid,channel:sessionStorage.channel,page:self.pagechose}
-        axios.post('http://pay.queyoujia.com/user/promoter/agent',qs.stringify(params),{headers: {
+        axios.post(sessionStorage.weburl+'/user/promoter/agent',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
                         console.log(res.data.data.list);
@@ -111,7 +111,7 @@ export default {
       searchinfo2:function () {
         var self =this ;
         var params={uid:self.prouid,cid:sessionStorage.cid,channel:sessionStorage.channel,page:self.pagechose}
-        axios.post('http://pay.queyoujia.com/user/promoter/agent',qs.stringify(params),{headers: {
+        axios.post(sessionStorage.weburl+'/user/promoter/agent',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
                           if (self.pagesize<res.data.data.total) {
@@ -157,17 +157,17 @@ export default {
         if (window.screen.availHeight<570) {
           self.tabH='300';
         }else{
-          self.tabH=(window.screen.availHeight-500+((560/window.screen.availHeight)*270));    
+          self.tabH=(window.screen.availHeight-500+((560/window.screen.availHeight)*270));
           console.log(device_type);
         }
       }
-      
+
     }
   },
   mounted(){
     var self =this ;
     var params={cid:sessionStorage.cid,channel:sessionStorage.channel};
-    axios.post('http://pay.queyoujia.com/user/promoter/agent',qs.stringify(params),{headers: {
+    axios.post(sessionStorage.weburl+'/user/promoter/agent',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
                         console.log(res.data.data.number);

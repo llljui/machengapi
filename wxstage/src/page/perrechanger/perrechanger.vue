@@ -24,7 +24,7 @@
 	      style="width: 100%;"
 	      placeholder="选择日期"
 	     >
-	    </el-date-picker>	
+	    </el-date-picker>
 	  </div>
 	</el-col>
 	<el-col :span="22" :offset="1" class="search mrt"><el-button type="primary" @click="submit">查询</el-button></el-col>
@@ -108,7 +108,7 @@ export default {
         //console.log(self.date1);
            self.pagesize=1
             var params={cid:sessionStorage.cid,channel:sessionStorage.channel}
-          axios.post('http://pay.queyoujia.com/user/charge/person',qs.stringify(params),{headers: {
+          axios.post(sessionStorage.weburl+'/user/charge/person',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
                         console.log(res.data.data);
@@ -120,11 +120,11 @@ export default {
                                   self.moreOrelse='查看更多'
                                 }else{
                                   self.moreOrelse='无更多数据'
-                                }  
+                                }
 
                       }).catch(function (err) {
                         console.log(err);
-                      })  
+                      })
       self.tableH=window.screen.availHeight/2.5;
     },
     methods:{
@@ -132,7 +132,7 @@ export default {
         var self =this ;
         pagesize:1;
         var params={startTime:Date.parse(self.value1)/1000,endTime:Date.parse(self.value2)/1000,cid:sessionStorage.cid,channel:sessionStorage.channel}
-          axios.post('  http://pay.queyoujia.com/user/charge/person',qs.stringify(params),{headers: {
+          axios.post(sessionStorage.weburl+'/user/charge/person',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
                         console.log(res.data.data);
@@ -144,16 +144,16 @@ export default {
                                   self.moreOrelse='查看更多'
                                 }else{
                                   self.moreOrelse='无更多数据'
-                                } 
+                                }
                       }).catch(function (err) {
                         console.log(err);
-                      })  
+                      })
       },
       submit2:function () {
         var self =this ;
         pagesize:1;
         var params={startTime:Date.parse(self.value1)/1000,endTime:Date.parse(self.value2)/1000,cid:sessionStorage.cid,channel:sessionStorage.channel,page:self.pagechose}
-          axios.post('  http://pay.queyoujia.com/user/charge/person',qs.stringify(params),{headers: {
+          axios.post(sessionStorage.weburl+'/user/charge/person',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
                         console.log(res.data.data);
@@ -168,10 +168,10 @@ export default {
                                   self.moreOrelse='查看更多'
                                 }else{
                                   self.moreOrelse='无更多数据'
-                                } 
+                                }
                       }).catch(function (err) {
                         console.log(err);
-                      })  
+                      })
       },
       lookmore:function () {
         var self =this;

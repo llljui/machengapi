@@ -83,7 +83,7 @@ export default {
     if (true) {//调试
           if (!sessionStorage.status) {
               console.log(sessionStorage.status);
-                    axios.get('http://pay.queyoujia.com/auth/check',{params:{cid:sessionStorage.cid,channel:sessionStorage.channel/*sid:'9c8104987b3e7c170121412bb6afd439',toid:'1218482',token:'vk92SYb6349245'*/}}).then(function (res) {
+                    axios.get(sessionStorage.weburl+'/auth/check',{params:{cid:sessionStorage.cid,channel:sessionStorage.channel/*sid:'9c8104987b3e7c170121412bb6afd439',toid:'1218482',token:'vk92SYb6349245'*/}}).then(function (res) {
                         if (res.data.data.userInfo.uid==res.data.data.userInfo.partnerId) {
                              self.$router.push({path:'/parsearch'});
                              self.navshow1=true;

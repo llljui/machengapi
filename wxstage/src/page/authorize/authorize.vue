@@ -23,7 +23,7 @@ export default {
   		console.log(454);
   		var self =this;
   		var params={hz:'hz',uid:self.uids,cid:sessionStorage.cid,channel:sessionStorage.channel}
-  		axios.post('http://pay.queyoujia.com/user/promoter/auth',qs.stringify(params),{headers: {
+  		axios.post(sessionStorage.weburl+'/user/promoter/auth',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
                         if (res.data.code==0) {
@@ -40,7 +40,7 @@ export default {
 
                       }).catch(function (err) {
                         console.log(err);
-                      }); 
+                      });
   	},
   	inputin:function (val) {
   		var self =this;
@@ -49,7 +49,7 @@ export default {
   	},
   	searchinfo:function () {
   		var self =this;
-  		axios.get('http://pay.queyoujia.com/user/check',{params:{hz:'hz',uid:self.uids,cid:sessionStorage.cid,channel:sessionStorage.channel}}).then(function (res) {
+  		axios.get(sessionStorage.weburl+'/user/check',{params:{hz:'hz',uid:self.uids,cid:sessionStorage.cid,channel:sessionStorage.channel}}).then(function (res) {
                  if (res.data.code==0) {
                            self.nickname=res.data.data.nickname;
                         }else{
@@ -58,7 +58,7 @@ export default {
                         //self.uids=res.data.data;
                       }).catch(function (err) {
                         console.log(err);
-                      }); 
+                      });
   	}
   }
 }

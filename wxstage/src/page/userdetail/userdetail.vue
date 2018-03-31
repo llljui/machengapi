@@ -40,12 +40,12 @@ export default {
     }
   },
   methods:{
-  	
+
   },
   mounted(){
   	var self = this;
   	var params={cid:sessionStorage.cid,channel:sessionStorage.channel}
-  	axios.post('http://pay.queyoujia.com/user/info',qs.stringify(params),{headers: {
+  	axios.post(sessionStorage.weburl+'/user/info',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
                       	console.log(res)

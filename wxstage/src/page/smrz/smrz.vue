@@ -53,26 +53,26 @@ export default {
       }
     },
     isCardNo:function (card) {
-       var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/; 
-          if(reg.test(card) === false) 
-          { 
-            // 身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X 
+       var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+          if(reg.test(card) === false)
+          {
+            // 身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X
            this.$message({
             message: '身份输入不合法',
             type: 'warning'
           });
-           return false; 
-          } 
+           return false;
+          }
     },
-    checkMobile:function (tell){ 
-    if(!(/^1[3|4|5|8|7][0-9]\d{4,8}$/.test(tell))){ 
+    checkMobile:function (tell){
+    if(!(/^1[3|4|5|8|7][0-9]\d{4,8}$/.test(tell))){
         this.$message({
             message: '手机输入不合法',
             type: 'warning'
           });
-        return false; 
-       } 
-      }, 
+        return false;
+       }
+      },
      handleAvatarSuccess1(res, file) {
         this.imageUrl1 = URL.createObjectURL(file.raw);
         console.log(res);
@@ -95,11 +95,11 @@ export default {
         if (!isLt2M) {
           this.$message.error('上传图片大小不能超过 8MB!');
         }
-         reader.onload = function(e){ 
+         reader.onload = function(e){
             this.result // 这个就是base64编码了
             console.log(this.result);
             var params={file:this.result}
-            axios.post('http://pay.queyoujia.com/public/upload',qs.stringify(params),{headers: {
+            axios.post(sessionStorage.weburl+'/public/upload',qs.stringify(params),{headers: {
                                             'Content-Type': 'application/x-www-form-urlencoded'
                         }}).then(function (res) {
                           self.private1=res.data.data.key;
@@ -124,11 +124,11 @@ export default {
         if (!isLt2M) {
           this.$message.error('上传图片大小不能超过 8MB!');
         }
-         reader.onload = function(e){ 
+         reader.onload = function(e){
             this.result // 这个就是base64编码了
             console.log(this.result);
             var params={file:this.result}
-            axios.post('http://pay.queyoujia.com/public/upload',qs.stringify(params),{headers: {
+            axios.post(sessionStorage.weburl+'/public/upload',qs.stringify(params),{headers: {
                                             'Content-Type': 'application/x-www-form-urlencoded'
                         }}).then(function (res) {
                           self.private2=res.data.data.key;
@@ -143,12 +143,12 @@ export default {
         var self =this;
         self.isCardNo(self.idcard);
         self.checkMobile(self.tell);
-        self.checkname(self.username); 
+        self.checkname(self.username);
           var arrs,reg=new RegExp("(^| )"+'openid'+"=([^;]*)(;|$)");
               arrs=document.cookie.match(reg);
              // var stop=arrs[0].indexOf(';');
           var params={openid:arrs[2],name:self.username,mobile:self.tell,idCard:self.idcard,cid:sessionStorage.cid,channel:sessionStorage.channel}
-          axios.post('http://pay.queyoujia.com/user/realname/verify',qs.stringify(params),{headers: {
+          axios.post(sessionStorage.weburl+'/user/realname/verify',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
           if (res.data.code==1102) {
@@ -170,7 +170,7 @@ export default {
           }).catch(function (err) {
             console.log(err);
           })
-           
+
       }
     },
     mounted:function () {

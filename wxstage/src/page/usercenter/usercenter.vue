@@ -20,7 +20,7 @@
 <el-row class="bgrow">
     <el-col :span="10" :offset="1" class="brb"><div  @click="bindtel">绑定手机号</div></el-col>
     <el-col :span="11" class="alig brb"><div  @click="bindtel"><i class="el-icon-arrow-right"></i></div></el-col>
-</el-row> 
+</el-row>
 	<el-row class="bgrow">
 	  	<el-col :span="10" :offset="1" class="brb"><div  @click="userdetail">查看个人资料</div></el-col>
 	  	<el-col :span="11" class="alig brb"><div  @click="userdetail"><i class="el-icon-arrow-right"></i></div></el-col>
@@ -56,7 +56,7 @@ export default {
   },
   mounted(){
     var self =this;
-    axios.get('http://pay.queyoujia.com/user/info',{params:{cid:sessionStorage.cid,channel:sessionStorage.channel}}).then(function (res) {
+    axios.get(sessionStorage.weburl+'/user/info',{params:{cid:sessionStorage.cid,channel:sessionStorage.channel}}).then(function (res) {
       console.log(res.data.data);
       self.uids=res.data.data.uid;
       self.ucode=res.data.data.no;

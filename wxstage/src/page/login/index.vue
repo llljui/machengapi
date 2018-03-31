@@ -30,7 +30,7 @@ export default {
       var cid = null;
       var channel = null;
       console.log(location.search);
-      if (location.search.indexOf('cid=1')!=-1&&location.search.indexOf('channel=hz')!=-1) {
+      if (location.search.indexOf('cid=1')!=-1&&location.search.indexOf('channel=tongjiang')!=-1) {
         console.log(2);
         cid='1';
         channel='hz'
@@ -60,7 +60,7 @@ export default {
         window.location.href = 'http://' + window.location.host + '/auth/login/weixinV2?cid=' + cid + '&channel=' + channel;
       }else{
          console.log(1);
-      }   
+      }
   	}
   },
   mounted(){

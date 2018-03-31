@@ -61,7 +61,7 @@ export default {
         var self =this ;
         self.pagenow=1;
         var params={cid:'2',channel:"fuyang",'page':1,startTime:Date.parse(self.date1)/1000,endTime:Date.parse(self.date2)/1000}
-        axios.post('      http://pay.queyoujia.com/user/team/infoPartner',qs.stringify(params),{headers: {
+        axios.post(sessionStorage.weburl+'/user/team/infoPartner',qs.stringify(params),{headers: {
                               'Content-Type': 'application/x-www-form-urlencoded'
                         }}).then(function (res) {
                           console.log(res);
@@ -79,7 +79,7 @@ export default {
        onSubmit2() {
         var self =this ;
         var params={cid:sessionStorage.cid,channel:sessionStorage.channel,'page':self.pagenow,startTime:Date.parse(self.date1)/1000,endTime:Date.parse(self.date2)/1000,page:self.pagenow}
-        axios.post('http://pay.queyoujia.com/user/team/infoPartner',qs.stringify(params),{headers: {
+        axios.post(sessionStorage.weburl+'/user/team/infoPartner',qs.stringify(params),{headers: {
                               'Content-Type': 'application/x-www-form-urlencoded'
                         }}).then(function (res) {
                           console.log(res);
@@ -120,7 +120,7 @@ export default {
       var self=this;
       self.pagesize=1;
       var params={cid:sessionStorage.cid,channel:sessionStorage.channel,'page':1}
-      axios.post('http://pay.queyoujia.com/user/team/infoPartner',qs.stringify(params),{headers: {
+      axios.post(sessionStorage.weburl+'/user/team/infoPartner',qs.stringify(params),{headers: {
                               'Content-Type': 'application/x-www-form-urlencoded'
                         }}).then(function (res) {
                           console.log(res);
