@@ -10,7 +10,7 @@ import 'element-ui/lib/theme-default/index.css'
 import './style.less'
 
 Vue.config.productionTip = false
-sessionStorage.weburl='http://chess-game.queyoujia.com'
+sessionStorage.weburl=window.location.protocol+'//'+window.location.host;
 /*if (sessionStorage.sid) {
 	router.push({path:'teamrechanger'});
 	console.log(22);

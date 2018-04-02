@@ -65,7 +65,7 @@
           </template>
         </el-table-column>
       </el-table>
-      <div class="info_tips" v-show="info_tip_show" >
+      <!-- <div class="info_tips" v-show="info_tip_show" >
         <div class="info_tips_modal" @click="infoclose"></div>
         <div class="info_tips_message">
             <p class="tips_message">
@@ -75,7 +75,7 @@
               为了维护广大代理的利益，本平台决定：代理或玩家超过30天未登录游戏则取消其代理资格或其绑定关系。<br>本决定将从3月31日之后开始实行。
             </p>
         </div>
-      </div>
+      </div> -->
   </div>
 </transition>
 </template>

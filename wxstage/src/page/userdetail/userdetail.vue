@@ -57,8 +57,8 @@ export default {
                         }else if(res.data.data.cid==2){
                           self.mygame='八道雀神'
                         }else{return}
-                        if (res.data.data.channel=='hz') {
-                          self.myzoom='杭州'
+                        if (res.data.data.channel=='tongjiang') {
+                          self.myzoom='桐江'
                         }else if(res.data.data.channel=='fuyang'){
                           self.myzoom='富阳'
                         }else{return}

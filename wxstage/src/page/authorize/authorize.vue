@@ -22,7 +22,7 @@ export default {
   	promoter:function () {
   		console.log(454);
   		var self =this;
-  		var params={hz:'hz',uid:self.uids,cid:sessionStorage.cid,channel:sessionStorage.channel}
+  		var params={uid:self.uids,cid:sessionStorage.cid,channel:sessionStorage.channel}
   		axios.post(sessionStorage.weburl+'/user/promoter/auth',qs.stringify(params),{headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                       }}).then(function (res) {
@@ -49,7 +49,7 @@ export default {
   	},
   	searchinfo:function () {
   		var self =this;
-  		axios.get(sessionStorage.weburl+'/user/check',{params:{hz:'hz',uid:self.uids,cid:sessionStorage.cid,channel:sessionStorage.channel}}).then(function (res) {
+  		axios.get(sessionStorage.weburl+'/user/check',{params:{uid:self.uids,cid:sessionStorage.cid,channel:sessionStorage.channel}}).then(function (res) {
                  if (res.data.code==0) {
                            self.nickname=res.data.data.nickname;
                         }else{

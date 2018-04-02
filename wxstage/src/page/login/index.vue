@@ -65,8 +65,8 @@ export default {
   },
   mounted(){
     console.log(location.search);
-    if (location.search.indexOf('cid=1')!=-1&&location.search.indexOf('channel=hz')!=-1) {
-      document.title="全民大冶后台";
+    if (location.search.indexOf('cid=1')!=-1&&location.search.indexOf('channel=tongjiang')!=-1) {
+      document.title="桐江游戏";
       sessionStorage.kefu='dagong0088';
     }else if(location.search.indexOf('cid=2')!=-1&&location.search.indexOf('channel=fuyang')!=-1){
       document.title="八道雀神后台";
