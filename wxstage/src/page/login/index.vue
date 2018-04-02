@@ -33,7 +33,7 @@ export default {
       if (location.search.indexOf('cid=1')!=-1&&location.search.indexOf('channel=tongjiang')!=-1) {
         console.log(2);
         cid='1';
-        channel='hz'
+        channel='tongjiang'
         sessionStorage['cid'] = cid;
         sessionStorage['channel'] = channel;
         window.location.href = 'http://' + window.location.host + '/auth/login/weixinV2?cid=' + cid + '&channel=' + channel;
