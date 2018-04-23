@@ -30,6 +30,7 @@
            <!--  <el-dropdown-item v-if="navshow6"><router-link to="/commission">提成结算</router-link></el-dropdown-item> -->
             <el-dropdown-item><router-link to="/diamondssold" @click.once="menahid">钻石出售</router-link></el-dropdown-item>
             <el-dropdown-item><router-link to="/usercenter">个人账户</router-link></el-dropdown-item>
+            <el-dropdown-item><router-link to="/declare">平台申明</router-link></el-dropdown-item>
             <el-dropdown-item v-if="navshow4"><router-link to="/jstc">结算提成</router-link></el-dropdown-item>
           </el-dropdown-menu>
       </el-dropdown>

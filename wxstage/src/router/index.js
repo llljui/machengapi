@@ -100,6 +100,14 @@ export default new Router({
       children: [{ path: 'teamdetail', name:'直属团队', component: _import('teamdetail/teamdetail') }]
     },
     {
+     path:'/declare',
+     component:layout,
+     redirect: 'declare/declare',
+     hidden: true,
+     noDropdown: true,
+     children: [{ path: 'declare', name:'平台申明', component: _import('declare/declare') }]
+   },
+    {
       path:'/authorize',
       component:layout,
       redirect: 'authorize/authorize',
