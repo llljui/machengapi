@@ -10,7 +10,7 @@ import 'element-ui/lib/theme-default/index.css'
 import './style.less'
 
 Vue.config.productionTip = false
-sessionStorage.weburl=window.location.protocol+'//'+window.location.host;
+sessionStorage.weburl=window.location.protocol+'//'+window.location.host+'/agent/';
 /*if (sessionStorage.sid) {
 	router.push({path:'teamrechanger'});
 	console.log(22);

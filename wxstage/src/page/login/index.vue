@@ -36,28 +36,28 @@ export default {
         channel='tongjiang'
         sessionStorage['cid'] = cid;
         sessionStorage['channel'] = channel;
-        window.location.href = 'http://' + window.location.host + '/auth/login/weixinV2?cid=' + cid + '&channel=' + channel;
+        window.location.href = 'http://' + window.location.host + '/agent/auth/login/weixinV2?cid=' + cid + '&channel=' + channel;
       }else if(location.search.indexOf('cid=2')!=-1&&location.search.indexOf('channel=fuyang')!=-1){
         console.log(3);
         cid='2';
         channel='fuyang'
         sessionStorage['cid'] = cid;
         sessionStorage['channel'] = channel;
-        window.location.href = 'http://' + window.location.host + '/auth/login/weixinV2?cid=' + cid + '&channel=' + channel;
+        window.location.href = 'http://' + window.location.host + '/agent/auth/login/weixinV2?cid=' + cid + '&channel=' + channel;
       }else if(location.search.indexOf('cid=3')!=-1&&location.search.indexOf('channel=default')!=-1){
         console.log(3);
         cid='3';
         channel='default'
         sessionStorage.cid= '3';
         sessionStorage.channel='default';
-        window.location.href = 'http://' + window.location.host + '/auth/login/weixinV2?cid=' + cid + '&channel=' + channel;
+        window.location.href = 'http://' + window.location.host + '/agent/auth/login/weixinV2?cid=' + cid + '&channel=' + channel;
       }else if(location.search.indexOf('cid=8')!=-1&&location.search.indexOf('channel=default')!=-1){
         console.log(8);
         cid='8';
         channel='default'
         sessionStorage.cid= '8';
         sessionStorage.channel='default';
-        window.location.href = 'http://' + window.location.host + '/auth/login/weixinV2?cid=' + cid + '&channel=' + channel;
+        window.location.href = 'http://' + window.location.host + '/agent/auth/login/weixinV2?cid=' + cid + '&channel=' + channel;
       }else{
          console.log(1);
       }
